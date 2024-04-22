@@ -29,6 +29,15 @@ jobs:
       run: |
         cd 01_DB
         docker build . --file Dockerfile.single --tag ${{ secrets.DOCKERHUB_USERNAME }}/geo-db:$TAG_NAME
+        
+    - name: Build the Docker image
+      shell: bash
+      run: |
+        cd 01_Server
+        docker build . --file Dockerfile.single --tag ${{ secrets.DOCKERHUB_USERNAME }}/geo-server:$TAG_NAME
     
     - name: Push Docker image to Docker.Hub
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/geo-db:$TAG_NAME
+
+    - name: Push Docker image to Docker.Hub
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/geo-server:$TAG_NAME
