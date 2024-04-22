@@ -33,7 +33,7 @@ jobs:
     - name: Build the Docker image
       shell: bash
       run: |
-        cd 01_Server
+        cd 02_Server
         docker build . --file Dockerfile.single --tag ${{ secrets.DOCKERHUB_USERNAME }}/geo-server:$TAG_NAME
     
     - name: Push Docker image to Docker.Hub
